@@ -1,21 +1,22 @@
 import Head from 'next/head'
 import {useState} from 'react'
-import styles from '../styles/Home.module.css'
 import axios from 'axios'
+import styles from '../styles/Home.module.css'
 
-export default function product1    ({data}){
+export default function product4    ({data}){
     const [demoFlag, setdemoFlag] = useState(false)
     const [demoFlag1, setdemoFlag1] = useState(false)
     const [productData, setProductData] = useState(data)
     const [imgData, setimgData] = useState(productData.resbody.variants[0].images)
     const [price,setprice] = useState(productData.resbody.variants[0].price)
     const [compare_at_price,setcompare_at_price] = useState(productData.resbody.variants[0].compare_at_price)
+
     const [offerText,setofferText] = useState(productData.resbody.variants[0].offers)
     // console.log(productData.resbody.title)
     // console.log(productData.resbody.variants[0].images)
     // console.log(productData.resbody.body_html)
     // console.log(productData.resbody.youtube_id)
-    console.log(productData.resbody.variants[0].offers)
+    // console.log(productData.resbody.variants[0].offers)
 
     return(
         <>
@@ -140,7 +141,7 @@ export async function getStaticProps(){
     
     var config = {
       method: 'get',
-      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=beginners-must-have-kit',
+      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=smudge-me-not-liquid-lipstick-minis-set',
       headers: { }
     };
     

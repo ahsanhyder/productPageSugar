@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import {useState} from 'react'
-import styles from '../styles/Home.module.css'
 import axios from 'axios'
+import styles from '../styles/Home.module.css'
 
-export default function product1    ({data}){
+export default function product2    ({data}){
     const [demoFlag, setdemoFlag] = useState(false)
     const [demoFlag1, setdemoFlag1] = useState(false)
     const [productData, setProductData] = useState(data)
@@ -15,7 +15,7 @@ export default function product1    ({data}){
     // console.log(productData.resbody.variants[0].images)
     // console.log(productData.resbody.body_html)
     // console.log(productData.resbody.youtube_id)
-    console.log(productData.resbody.variants[0].offers)
+    // console.log(productData.resbody.variants[0].offers)
 
     return(
         <>
@@ -75,6 +75,32 @@ export default function product1    ({data}){
                 {compare_at_price && 
                 <h5 class="text-danger">({Math.floor(((compare_at_price-price)/compare_at_price)*100)} % Off)</h5>}
                 </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
+                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
+            </div>
+            <div class="row">
+                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
+                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
+            </div>
+            <div class="row">
+                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
+                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
+            </div>
+            <div class="row">
+                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
+                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
+            </div>
+            <div class="row">
+                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
+                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
+            </div>
+            <div class="row">
+                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
+                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
             </div>
         </div>
 
@@ -140,7 +166,7 @@ export async function getStaticProps(){
     
     var config = {
       method: 'get',
-      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=beginners-must-have-kit',
+      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=boss-babe-kit',
       headers: { }
     };
     

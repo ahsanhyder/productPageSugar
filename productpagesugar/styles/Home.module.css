@@ -1,4 +1,4 @@
-.container {
+/* .container {
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
@@ -112,11 +112,32 @@
 
 .logo {
   height: 1em;
+} */
+
+.initial{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (max-width: 600px) {
+.divp2{
+  height:75px;
+  font-weight: 600;
+}
+
+.circleDiv{
+  height:150px;
+  width:150px;
+  background-color: brown;
+  border-radius: 50%;
+}
+
+.linecut{
+  text-decoration: line-through;
+}
+/* @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
-}
+} */
