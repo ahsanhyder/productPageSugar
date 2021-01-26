@@ -95,13 +95,20 @@ const handletruncate = (truncated) => {
                 </div>
             </div>
 <div>
-    {offerText.map((ele)=>{
+    <Truncate lines={!expand && 3} 
+            ellipsis={<span className="text-primary" onClick={handleToggle}><strong>...Read more</strong></span>}
+            onTruncate={handletruncate}
+            >
+                {offerText.map((ele)=>{
         return(
-            <div>
-                <div>{ele.productOfferText}</div>
-            </div>
+            <>
+                {ele.productOfferText}
+                <br/>
+            </>
         )
-    })}
+    })} 
+            </Truncate> 
+            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
 
 </div>
             <div class="row mt-3">
