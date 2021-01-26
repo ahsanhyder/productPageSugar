@@ -2,10 +2,12 @@ import Head from 'next/head'
 import {useState} from 'react'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
+import Truncate from 'react-truncate';
+
 
 export default function product1    ({data}){
-    const [demoFlag, setdemoFlag] = useState(false)
-    const [demoFlag1, setdemoFlag1] = useState(false)
+    const [expand, setexpand] = useState(false)
+    const [truncate, settruncate] = useState(false)
     const [productData, setProductData] = useState(data)
     const [imgData, setimgData] = useState(productData.resbody.variants[0].images)
     const [price,setprice] = useState(productData.resbody.variants[0].price)
@@ -15,7 +17,17 @@ export default function product1    ({data}){
     // console.log(productData.resbody.variants[0].images)
     // console.log(productData.resbody.body_html)
     // console.log(productData.resbody.youtube_id)
-    console.log(productData.resbody.variants[0].offers)
+    // console.log(productData.resbody.variants[0].offers)
+
+    const handleToggle = () => {
+        setexpand(!expand)
+    }
+    
+    const handletruncate = (truncated) => {
+        if(truncate!==truncated){
+            settruncate(truncated)
+        }
+    }
 
     return(
         <>
@@ -118,9 +130,15 @@ export default function product1    ({data}){
                 <h5 class="text-success">PRODUCT DESCRIPTION</h5>
                 </div>
             </div>
-           <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
+            <Truncate lines={!expand && 5} 
+            ellipsis={<span className="text-primary" onClick={handleToggle}><strong>...Read more</strong></span>}
+            onTruncate={handletruncate}
+            >
+                <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
+            </Truncate> 
+            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
             </div> 
-            {productData.resbody.youtube_id&&  
+            {productData.resbody.youtube_id &&  
         <div class="container">
                 <div class="ml-lg-5 d-none d-md-block">
                 <iframe class="bye" width="100%" height="250px" src={`https://www.youtube.com/embed/${productData.resbody.youtube_id}`}frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

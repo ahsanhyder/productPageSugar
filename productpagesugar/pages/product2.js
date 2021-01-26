@@ -2,10 +2,11 @@ import Head from 'next/head'
 import {useState} from 'react'
 import axios from 'axios'
 import styles from '../styles/Home.module.css'
+import Truncate from 'react-truncate';
 
 export default function product2    ({data}){
-    const [demoFlag, setdemoFlag] = useState(false)
-    const [demoFlag1, setdemoFlag1] = useState(false)
+    const [expand, setexpand] = useState(false)
+    const [truncate, settruncate] = useState(false)
     const [productData, setProductData] = useState(data)
     const [imgData, setimgData] = useState(productData.resbody.variants[0].images)
     const [price,setprice] = useState(productData.resbody.variants[0].price)
@@ -16,6 +17,16 @@ export default function product2    ({data}){
     // console.log(productData.resbody.body_html)
     // console.log(productData.resbody.youtube_id)
     // console.log(productData.resbody.variants[0].offers)
+
+    const handleToggle = () => {
+        setexpand(!expand)
+    }
+    
+    const handletruncate = (truncated) => {
+        if(truncate!==truncated){
+            settruncate(truncated)
+        }
+    }
 
     return(
         <>
@@ -144,7 +155,13 @@ export default function product2    ({data}){
                 <h5 class="text-success">PRODUCT DESCRIPTION</h5>
                 </div>
             </div>
-           <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
+            <Truncate lines={!expand && 5} 
+            ellipsis={<span className="text-primary" onClick={handleToggle}><strong>...Read more</strong></span>}
+            onTruncate={handletruncate}
+            >
+                <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
+            </Truncate> 
+            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
             </div> 
             {productData.resbody.youtube_id&&  
         <div class="container">
