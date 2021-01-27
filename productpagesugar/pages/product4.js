@@ -12,9 +12,11 @@ export default function product4    ({data}){
     const [price,setprice] = useState(productData.resbody.variants[0].price)
     const [readMore,setReadMore]=useState(false);
     const [compare_at_price,setcompare_at_price] = useState(productData.resbody.variants[0].compare_at_price)
-
+    const [products, setproducts] = useState(productData.resbody.sugar_options)
     const [offerText,setofferText] = useState(productData.resbody.variants[0].offers)
     
+
+    console.log(productData.resbody.sugar_options[0].title)
     // console.log(productData.resbody.title)
     // console.log(productData.resbody.variants[0].images)
 const handleToggle = () => {
@@ -88,15 +90,33 @@ const handletruncate = (truncated) => {
             </div>
         </div>
 
+        <div class="container-fluid ml-3">
+            {/* <div class="row">
+                <div class={`col-4 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >{productData.resbody.sugar_options[0].title}</div>
+                <div class={`col-8 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
+            </div> */}
+            <div class="row">
+                {products.map((ele)=>{
+                    return(
+                        <>
+                        <div class="col-1"></div>
+                        <div class={`col-4  text-center border d-flex justify-content-center align-items-center ${styles.divp2} `}>{ele.title}</div>
+                        <div class={`col-7  text-center border d-flex justify-content-center align-items-center ${styles.divp21} `}></div>
+                        </>
+                    )
+                })}
+            </div>
+        </div>
+
         <div class="container-fluid mx-4">
             <div class="row">
                 <div class="col">
-                <h5 class="text-success">AVAILABLE OFFERS</h5>
+                <h5 class="text-success mt-3">AVAILABLE OFFERS</h5>
                 </div>
             </div>
 <div>
     <Truncate lines={!expand && 3} 
-            ellipsis={<span className="text-primary" onClick={handleToggle}><strong>...Read more</strong></span>}
+            ellipsis={<span className="text-primary" onClick={handleToggle}><strong> + more</strong></span>}
             onTruncate={handletruncate}
             >
                 {offerText.map((ele)=>{
@@ -108,7 +128,7 @@ const handletruncate = (truncated) => {
         )
     })} 
             </Truncate> 
-            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
+            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong> - less</strong></span>)}
 
 </div>
             <div class="row mt-3">
@@ -138,15 +158,15 @@ const handletruncate = (truncated) => {
             </div>
 
             <Truncate lines={!expand && 5} 
-            ellipsis={<span className="text-primary" onClick={handleToggle}><strong>...Read more</strong></span>}
+            ellipsis={<span className="text-primary" onClick={handleToggle}><strong> Read More</strong></span>}
             onTruncate={handletruncate}
             >
                 <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
             </Truncate> 
-            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
+            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show Less</strong></span>)}
             </div> 
             {productData.resbody.youtube_id&&  
-        <div class="container">
+        <div class="container mt-3">
                 <div class="ml-lg-5 d-none d-md-block">
                 <iframe class="bye" width="100%" height="250px" src={`https://www.youtube.com/embed/${productData.resbody.youtube_id}`}frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>

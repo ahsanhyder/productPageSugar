@@ -147,7 +147,7 @@ export default function product1    ({data}){
             {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
             </div> 
             {productData.resbody.youtube_id &&  
-        <div class="container">
+        <div class="container mt-3">
                 <div class="ml-lg-5 d-none d-md-block">
                 <iframe class="bye" width="100%" height="250px" src={`https://www.youtube.com/embed/${productData.resbody.youtube_id}`}frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
@@ -166,7 +166,7 @@ export async function getStaticProps(){
     
     var config = {
       method: 'get',
-      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=beginners-must-have-kit',
+      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=aquaholic-priming-moisturizer',
       headers: { }
     };
     

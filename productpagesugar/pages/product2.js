@@ -12,6 +12,7 @@ export default function product2    ({data}){
     const [price,setprice] = useState(productData.resbody.variants[0].price)
     const [compare_at_price,setcompare_at_price] = useState(productData.resbody.variants[0].compare_at_price)
     const [offerText,setofferText] = useState(productData.resbody.variants[0].offers)
+    const [products, setproducts] = useState(productData.resbody.sugar_options)
     // console.log(productData.resbody.title)
     // console.log(productData.resbody.variants[0].images)
     // console.log(productData.resbody.body_html)
@@ -88,37 +89,28 @@ export default function product2    ({data}){
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid ml-3">
+            {/* <div class="row">
+                <div class={`col-4 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >{productData.resbody.sugar_options[0].title}</div>
+                <div class={`col-8 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
+            </div> */}
             <div class="row">
-                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
-                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
-            </div>
-            <div class="row">
-                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
-                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
-            </div>
-            <div class="row">
-                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
-                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
-            </div>
-            <div class="row">
-                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
-                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
-            </div>
-            <div class="row">
-                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
-                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
-            </div>
-            <div class="row">
-                <div class={`col-4 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Crayon Lipstick</div>
-                <div class={`col-8 bg-primary text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >Matte As Hell Crayon Lipstick - 03 Poison Ivy</div>
+                {products.map((ele)=>{
+                    return(
+                        <>
+                        <div class="col-1"></div>
+                        <div class={`col-4  text-center border d-flex justify-content-center align-items-center ${styles.divp2} `}>{ele.title}</div>
+                        <div class={`col-7  text-center border d-flex justify-content-center align-items-center ${styles.divp21} `}></div>
+                        </>
+                    )
+                })}
             </div>
         </div>
 
         <div class="container-fluid mx-4">
             <div class="row">
                 <div class="col">
-                <h5 class="text-success">AVAILABLE OFFERS</h5>
+                <h5 class="text-success mt-3">AVAILABLE OFFERS</h5>
                 </div>
             </div>
             <div>
@@ -172,7 +164,7 @@ export default function product2    ({data}){
             {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
             </div> 
             {productData.resbody.youtube_id&&  
-        <div class="container">
+        <div class="container mt-3">
                 <div class="ml-lg-5 d-none d-md-block">
                 <iframe class="bye" width="100%" height="250px" src={`https://www.youtube.com/embed/${productData.resbody.youtube_id}`}frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
