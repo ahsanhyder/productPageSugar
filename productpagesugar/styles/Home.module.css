@@ -157,6 +157,28 @@
   background-color: ;
   border:1px solid black;
 }
+
+.readmore{
+  color: #007BFF;
+}
+
+.logos{
+  font-size:small;
+  font-weight: bold;
+
+}
+.headingMain{
+  font-weight: bolder;
+}
+.productTitle{
+  font-weight: bolder;
+  font-size: larger;
+}
+
+div.sticky {
+  position: sticky;
+}
+
 /* @media (max-width: 600px) {
   .grid {
     width: 100%;
