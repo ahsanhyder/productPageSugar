@@ -15,7 +15,10 @@ export default function product1    ({data}){
     const [price,setprice] = useState(productData.resbody.variants[0].price)
     const [compare_at_price,setcompare_at_price] = useState(productData.resbody.variants[0].compare_at_price)
     const [offerText,setofferText] = useState(productData.resbody.variants[0].offers)
+    const [products, setproducts] = useState(productData.resbody.sugar_options)
+    const [rProductTitle, setrProductTitle] = useState(productData.resbody.sugar_options.products)
 
+    // console.log(productData.resbody.sugar_options[0].products)
     const handleToggle = () => {
         setexpand(!expand)
     }
@@ -88,17 +91,41 @@ export default function product1    ({data}){
                 </div>
             </div>
             <div class="row">
-            <div class="col text-center">
+            <div class="col-4">
                     <h5 class={`text-danger ${styles.linecut}`}>{compare_at_price && `Rs. ${compare_at_price}`}</h5>                
                 </div>
-                <div class="col text-center">
-                    <p className={styles.productTitle}>Rs. {price}</p>                
+                <div class="col-4 text-center">
+                    <p className={styles.productTitle2}>Rs. {price}</p>                
                 </div>
-                <div class="col">
+                <div class="col-4">
                 {compare_at_price && 
                 <h5 class="text-danger">({Math.floor(((compare_at_price-price)/compare_at_price)*100)} % Off)</h5>}
                 </div>
             </div>
+        </div>
+
+        <div class="container-fluid mx-2 mb-4 mt-4">
+            {/* <div class="row">
+                <div class={`col-4 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >{productData.resbody.sugar_options[0].title}</div>
+                <div class={`col-8 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
+            </div> */}
+            {/* <div class="row"> */}
+                {products.map((ele)=>{
+                    return(
+                        <>
+                        <div class="d-flex">
+                        <div class={`col-4  text-center border d-flex justify-content-center align-items-center ${styles.divp2} `}>{ele.title}</div>
+                        <div class={`col-8  text-center border d-flex justify-content-center align-items-center ${styles.divp21} `}></div>
+                        </div>
+                        {/* <div> */}
+                            {console.log(ele.products.map(elem=><div>{elem.title}</div>))}
+                            <div class={`rounded-circle ${styles.circle}`}></div>
+                            {/* <div class={`rounded-circle ${styles.circle}`}></div> */}
+                        {/* </div> */}
+                        </>
+                    )
+                })}
+            {/* </div> */}
         </div>
 
         <div class="container-fluid mx-2">
@@ -199,7 +226,7 @@ export async function getStaticProps(){
     
     var config = {
       method: 'get',
-      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=aquaholic-priming-moisturizer',
+      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=boss-babe-kit',
       headers: { }
     };
     

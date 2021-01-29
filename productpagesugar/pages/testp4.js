@@ -7,9 +7,7 @@ import Truncate from 'react-truncate';
 
 export default function product1    ({data}){
     const [expand, setexpand] = useState(false)
-    const [rmore, setrmore] = useState(false)
     const [truncate, settruncate] = useState(false)
-    const [rtruncate, setrtruncate] = useState(false)
     const [productData, setProductData] = useState(data)
     const [imgData, setimgData] = useState(productData.resbody.variants[0].images)
     const [price,setprice] = useState(productData.resbody.variants[0].price)
@@ -23,16 +21,6 @@ export default function product1    ({data}){
     const handletruncate = (truncated) => {
         if(truncate!==truncated){
             settruncate(truncated)
-        }
-    }
-
-    const handlermore = () =>{
-        setrmore(!rmore)
-    }
-
-    const handlertruncate = (truncated) => {
-        if(rtruncate!==truncated){
-            setrtruncate(truncated)
         }
     }
 
@@ -125,23 +113,17 @@ export default function product1    ({data}){
 
 </div>
         </div>
-
-        <div class="container-fluid mx-1 mt-4 mb-4">
-           <div class="my-2">
-                <span class="px-1" style={{"fontWeight":"bold"}}>
-                    Delivery Details
+        {/* <div class="container-fluid mx-1 mt-4 mb-4">
+            <span class="px-1">
+                Delivery Details
+            </span>
+            <span class="px-1">
+                <input type="text" placeholder="Enter Pincode"/>
                 </span>
-            </div>
-            <div class="mx-4 mt-2 mb-2">
-                <span class="">
-                    <input class="text-center" type="text"  placeholder="Enter Pincode" style={{"outline":"none","border":"none","borderBottom":"1px solid black","fontSize":"medium"}}/>
-                </span>
-                <span class="px-4" style={{"fontWeight":"bold","color":"#DB7093"}}>
+                <span class="px-1">
                     CHECK
                 </span>
-            </div>
-               
-        </div>
+        </div> */}
 
         <div className="container-fluid  px-2 mt-4 mb-4" style={{
             "fontSize":"12px",
@@ -173,13 +155,13 @@ export default function product1    ({data}){
                 <h6 className={styles.headingMain}>PRODUCT DESCRIPTION</h6>
                 </div>
             </div>
-            <Truncate lines={!rmore && 5} 
-            ellipsis={<span className={styles.readmore} onClick={handlermore}><strong>...Read more</strong></span>}
-            onTruncate={handlertruncate}
+            <Truncate lines={!expand && 5} 
+            ellipsis={<span className={styles.readmore} onClick={handleToggle}><strong>...Read more</strong></span>}
+            onTruncate={handletruncate}
             >
                 <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
             </Truncate> 
-            {!rtruncate && rmore && (<span className={styles.readmore} onClick={handlermore}><strong>Show less</strong></span>)}
+            {!truncate && expand && (<span className={styles.readmore} onClick={handleToggle}><strong>Show less</strong></span>)}
             </div>
         </div>
         {productData.resbody.youtube_id &&  
@@ -199,7 +181,7 @@ export async function getStaticProps(){
     
     var config = {
       method: 'get',
-      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=aquaholic-priming-moisturizer',
+      url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=smudge-me-not-liquid-lipstick-minis-set',
       headers: { }
     };
     

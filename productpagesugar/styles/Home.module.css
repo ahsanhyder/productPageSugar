@@ -122,16 +122,16 @@
 
 .divp2{
   height:60px;
-  width:60;
-  margin-bottom: 5px;
+  /* width:60; */
+  /* margin-bottom: 5px; */
   font-weight: 600;
-  background-color: #F06292;
+  background-color: #C4C4C4;
 }
 
 .divp21{
   height:60px;
   font-weight: 600;
-  background-color: #F48FB1;
+  background-color: #E0E0E0;
 }
 
 .divp22{
@@ -140,11 +140,12 @@
   font-weight: 600;
   /* background-color: #F06292; */
 }
-.circleDiv{
-  height:150px;
-  width:150px;
-  background-color: brown;
-  border-radius: 50%;
+.circle{
+  height:40px;
+  width:40px;
+  margin: 5px;
+  background-color: rgb(151, 12, 12);
+  /* border-radius: 50%; */
 }
 
 .linecut{
@@ -173,6 +174,11 @@
 .productTitle{
   font-weight: bolder;
   font-size: larger;
+}
+
+.productTitle2{
+  font-weight: bolder;
+  font-size: large;
 }
 
 div.sticky {

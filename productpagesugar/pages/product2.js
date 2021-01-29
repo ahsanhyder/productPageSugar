@@ -6,7 +6,9 @@ import Truncate from 'react-truncate';
 
 export default function product2    ({data}){
     const [expand, setexpand] = useState(false)
+    const [rmore, setrmore] = useState(false)
     const [truncate, settruncate] = useState(false)
+    const [rtruncate, setrtruncate] = useState(false)
     const [productData, setProductData] = useState(data)
     const [imgData, setimgData] = useState(productData.resbody.variants[0].images)
     const [price,setprice] = useState(productData.resbody.variants[0].price)
@@ -26,6 +28,16 @@ export default function product2    ({data}){
     const handletruncate = (truncated) => {
         if(truncate!==truncated){
             settruncate(truncated)
+        }
+    }
+
+    const handlermore = () =>{
+        setrmore(!rmore)
+    }
+
+    const handlertruncate = (truncated) => {
+        if(rtruncate!==truncated){
+            setrtruncate(truncated)
         }
     }
 
@@ -114,7 +126,7 @@ export default function product2    ({data}){
                 </div>
             </div>
             <div>
-    <Truncate lines={!expand && 3} 
+    <Truncate lines={!rmore && 3} 
             ellipsis={<span className="text-primary" onClick={handleToggle}><strong>...Read more</strong></span>}
             onTruncate={handletruncate}
             >
@@ -127,7 +139,7 @@ export default function product2    ({data}){
         )
     })} 
             </Truncate> 
-            {!truncate && expand && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
+            {!rtruncate && rmore && (<span className="text-primary" onClick={handleToggle}><strong>Show less</strong></span>)}
 
 </div>
             <div class="row mt-3">
