@@ -13,11 +13,6 @@ export default function product1    ({data}){
     const [price,setprice] = useState(productData.resbody.variants[0].price)
     const [compare_at_price,setcompare_at_price] = useState(productData.resbody.variants[0].compare_at_price)
     const [offerText,setofferText] = useState(productData.resbody.variants[0].offers)
-    // console.log(productData.resbody.title)
-    // console.log(productData.resbody.variants[0].images)
-    // console.log(productData.resbody.body_html)
-    // console.log(productData.resbody.youtube_id)
-    // console.log(productData.resbody.variants[0].offers)
 
     const handleToggle = () => {
         setexpand(!expand)
@@ -37,16 +32,17 @@ export default function product1    ({data}){
                 <link rel="icon" href="/favicon.ico" />
             </Head>
         </div>
-        <div class="container-fluid mt-3 mb-3">
+        <div style={{"overflowX":"hidden"}}>
+        <div class={`container-fluid mt-3 mb-3 ${styles.sticky}`}>
             <div class="row">
-                <div class="col-4 col-sm-3 col-md-4  "></div>
-                <div class="col-6 col-sm-7 col-md-4 col-lg-3">
+                <div class="col-1 col-sm-3 col-md-4  "></div>
+                <div class="col-10 col-sm-7 col-md-4 col-lg-4">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-  </ol>
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    </ol>
   
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -69,11 +65,14 @@ export default function product1    ({data}){
   </a>
 </div>
                 </div>
-                <div class="col-2 col-sm-2 col-md-4"></div>
+                <div class="col-1 col-sm-2 col-md-4"></div>
             </div>
+        </div> 
+
+        <div class="container-fluid">
             <div class="row">
-                <div class="col">
-                <h3 class="text-center">{productData.resbody.title}</h3>
+                <div class="col text-center">
+                    <p className={styles.productTitle}>{productData.resbody.title}</p>
                 </div>
             </div>
             <div class="row">
@@ -81,7 +80,7 @@ export default function product1    ({data}){
                     <h5 class={`text-danger ${styles.linecut}`}>{compare_at_price && `Rs. ${compare_at_price}`}</h5>                
                 </div>
                 <div class="col text-center">
-                    <h5>Rs. {price}</h5>                
+                    <p className={styles.productTitle}>Rs. {price}</p>                
                 </div>
                 <div class="col">
                 {compare_at_price && 
@@ -90,10 +89,10 @@ export default function product1    ({data}){
             </div>
         </div>
 
-        <div class="container-fluid mx-4">
+        <div class="container-fluid mx-2">
             <div class="row">
                 <div class="col">
-                <h5>AVAILABLE OFFERS</h5>
+                <h6 className={styles.headingMain}>AVAILABLE OFFERS</h6>
                 </div>
             </div>
             <div>
@@ -113,29 +112,35 @@ export default function product1    ({data}){
             {!truncate && expand && (<span className={styles.readmore} onClick={handleToggle}><strong> - less</strong></span>)}
 
 </div>
-            <div class="row mt-3">
-                <div class="col text-center">
-                    <h5>Delivery details</h5>
-                </div>
-                <div class="col text-center">
-                <input class="text-center" type="text" placeholder="Enter Pincode"/>
-                </div>
-                <div class="col">
-                <button type="button" class="btn btn-outline-secondary btn-block">Check</button>
-                </div>
+        </div>
+        <div className="container-fluid  px-2 mt-4 mb-4" style={{
+            "fontSize":"12px",
+            }}>
+                <div style={{ border:"1px solid black"}} className="py-3 px-1">
+            <span class="">
+                <img src="/Cruelty_Free.png" width="23" alt="Cruelty Free img"/>
+            </span>
+            <span>
+                <span class="mx-1 "  style={{"fontWeight":"bold"}}>Cruelty Free</span>
+            </span>
+            <span class="px-1">
+                <img src="/Quality_First.png" width="23" alt="Quality First img"/>
+            </span>
+            <span class="mx-1" style={{"fontWeight":"bold"}}>
+                <span>Quality First</span>
+            </span>
+            <span class="px-1">
+                <img class src="/Easy_Returns.png" width="23" alt="Easy Returns img"/>
+            </span>
+            <span>
+                <span style={{"fontWeight":"bold"}}>Easy Return policy</span>
+            </span>
             </div>
         </div>
-        <div class="container-fluid mx-4">
+        <div class="container-fluid mx-2">
             <div class="row">
                 <div class="col">
-                    <img  src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR_Trust_Seal_473x.progressive.jpg?v=1597728764" alt=""/>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid mx-4">
-            <div class="row">
-                <div class="col">
-                <h5>PRODUCT DESCRIPTION</h5>
+                <h6 className={styles.headingMain}>PRODUCT DESCRIPTION</h6>
                 </div>
             </div>
             <Truncate lines={!expand && 5} 
@@ -145,14 +150,12 @@ export default function product1    ({data}){
                 <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
             </Truncate> 
             {!truncate && expand && (<span className={styles.readmore} onClick={handleToggle}><strong>Show less</strong></span>)}
-            </div> 
-            {productData.resbody.youtube_id &&  
+            </div>
+        </div>
+        {productData.resbody.youtube_id &&  
         <div class="container mt-3">
-                <div class="ml-lg-5 d-none d-md-block">
+                <div class="">
                 <iframe class="bye" width="100%" height="250px" src={`https://www.youtube.com/embed/${productData.resbody.youtube_id}`}frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                </div>
-                <div class=" d-block d-md-none " style={{marginLeft:"100px  "}}>
-                <iframe class="hi" width="100%" height="250px" src={`https://www.youtube.com/embed/${productData.resbody.youtube_id}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
         </div>}
         </>
