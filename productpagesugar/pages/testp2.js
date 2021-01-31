@@ -119,9 +119,17 @@ export default function product1    ({data}){
                         </div>
                         {/* <div> */}
                             {console.log(ele.products.map(elem=><div>{elem.title}</div>))}
-                            <div class={`rounded-circle ${styles.circle}`}></div>
+                            {/* <div class={`rounded-circle ${styles.circle}`}></div> */}
                             {/* <div class={`rounded-circle ${styles.circle}`}></div> */}
                         {/* </div> */}
+                        <div class="container-fluid">
+                            <div class="row">
+                                <span>
+                                    <span class={`rounded-circle ${styles.circle}`}></span>
+                                    {/* <div class={`rounded-circle ${styles.circle}`}></div> */}
+                                </span>
+                            </div>
+                        </div>
                         </>
                     )
                 })}

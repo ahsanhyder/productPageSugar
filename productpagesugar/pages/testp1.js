@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import {useState} from 'react'
 import styles from '../styles/Home.module.css'
+import {Button,Modal} from 'react-bootstrap'
 import axios from 'axios'
 import Truncate from 'react-truncate';
 
@@ -15,6 +16,11 @@ export default function product1    ({data}){
     const [price,setprice] = useState(productData.resbody.variants[0].price)
     const [compare_at_price,setcompare_at_price] = useState(productData.resbody.variants[0].compare_at_price)
     const [offerText,setofferText] = useState(productData.resbody.variants[0].offers)
+
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
     const handleToggle = () => {
         setexpand(!expand)
@@ -120,6 +126,32 @@ export default function product1    ({data}){
         return(
             <>
                 {ele.productOfferText}
+                <br/>
+
+                <Button variant="primary" onClick={handleShow}>
+        Know More
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        {/* <Modal.Header closeButton> */}
+          <Modal.Title> Terms & Conditions</Modal.Title>
+        {/* </Modal.Header> */}
+        <Modal.Body>
+            {}
+            {ele.tnc}
+        </Modal.Body>
+        {/* <Modal.Footer> */}
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button> */}
+        {/* </Modal.Footer> */}
+      </Modal>
+
+
+                
                 <br/>
             </>
         )

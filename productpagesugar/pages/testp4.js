@@ -7,7 +7,9 @@ import Truncate from 'react-truncate';
 
 export default function product1    ({data}){
     const [expand, setexpand] = useState(false)
+    const [rmore, setrmore] = useState(false)
     const [truncate, settruncate] = useState(false)
+    const [rtruncate, setrtruncate] = useState(false)
     const [productData, setProductData] = useState(data)
     const [imgData, setimgData] = useState(productData.resbody.variants[0].images)
     const [price,setprice] = useState(productData.resbody.variants[0].price)
@@ -21,6 +23,16 @@ export default function product1    ({data}){
     const handletruncate = (truncated) => {
         if(truncate!==truncated){
             settruncate(truncated)
+        }
+    }
+
+    const handlermore = () =>{
+        setrmore(!rmore)
+    }
+
+    const handlertruncate = (truncated) => {
+        if(rtruncate!==truncated){
+            setrtruncate(truncated)
         }
     }
 
@@ -155,13 +167,13 @@ export default function product1    ({data}){
                 <h6 className={styles.headingMain}>PRODUCT DESCRIPTION</h6>
                 </div>
             </div>
-            <Truncate lines={!expand && 5} 
-            ellipsis={<span className={styles.readmore} onClick={handleToggle}><strong>...Read more</strong></span>}
-            onTruncate={handletruncate}
+            <Truncate lines={!rmore && 5} 
+            ellipsis={<span className={styles.readmore} onClick={handlermore}><strong>...Read more</strong></span>}
+            onTruncate={handlertruncate}
             >
                 <div dangerouslySetInnerHTML={{__html:[productData.resbody.body_html]}}></div>
             </Truncate> 
-            {!truncate && expand && (<span className={styles.readmore} onClick={handleToggle}><strong>Show less</strong></span>)}
+            {!rtruncate && rmore && (<span className={styles.readmore} onClick={handlermore}><strong>Show less</strong></span>)}
             </div>
         </div>
         {productData.resbody.youtube_id &&  
