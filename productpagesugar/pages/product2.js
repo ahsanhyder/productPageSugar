@@ -19,7 +19,6 @@ export default function product1({ data }) {
 	const [ products, setproducts ] = useState(productData.resbody.sugar_options);
 	const [ rProductTitle, setrProductTitle ] = useState(productData.resbody.sugar_options.products);
 
-	// console.log(productData.resbody.sugar_options[0].products)
 
 	const [ show, setShow ] = useState(false);
 
@@ -97,11 +96,6 @@ export default function product1({ data }) {
 				</div>
 
 				<div class="container-fluid mx-2 mb-4 mt-4">
-					{/* <div class="row">
-                <div class={`col-4 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} >{productData.resbody.sugar_options[0].title}</div>
-                <div class={`col-8 bg-warning text-center border d-flex justify-content-center align-items-center ${styles.divp2} `} ></div>
-            </div> */}
-					{/* <div class="row"> */}
 					{products.map((ele) => {
 						return (
 							<div>
@@ -117,7 +111,10 @@ export default function product1({ data }) {
 								</div>
 								{/* <div> */}
 								{console.log(ele.products.map((elem) => <div>{elem.title}</div>))}
-								{/* <div class={`rounded-circle ${styles.circle}`}></div> */}
+                                <div class="d-flex nowrap">
+								<div class={`rounded-circle ${styles.circle}`}></div>
+                                <div class={`rounded-circle ${styles.circle}`}></div>
+                                </div>
 								{/* <div class={`rounded-circle ${styles.circle}`}></div> */}
 								{/* </div> */}
 								<div class="container-fluid">

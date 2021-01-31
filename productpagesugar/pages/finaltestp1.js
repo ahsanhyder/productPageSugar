@@ -3,10 +3,10 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import { Button, Modal } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
-import axios from 'axios';
 import Truncate from 'react-truncate';
+import axios from 'axios';
 
-export default function product1({ data }) {
+export default function product3({ data }) {
 	const [ expand, setexpand ] = useState(false);
 	const [ rmore, setrmore ] = useState(false);
 	const [ truncate, settruncate ] = useState(false);
@@ -16,7 +16,6 @@ export default function product1({ data }) {
 	const [ price, setprice ] = useState(productData.resbody.variants[0].price);
 	const [ compare_at_price, setcompare_at_price ] = useState(productData.resbody.variants[0].compare_at_price);
 	const [ offerText, setofferText ] = useState(productData.resbody.variants[0].offers);
-
 	const [ show, setShow ] = useState(false);
 
 	const handleClose = () => setShow(false);
@@ -24,10 +23,6 @@ export default function product1({ data }) {
 
 	const tnc = offerText.map((ele) => ele.tnc);
 
-	console.log(tnc);
-
-	//   console.log((imgData))
-	console.log('offertext', offerText);
 	const handleToggle = () => {
 		setexpand(!expand);
 	};
@@ -247,7 +242,8 @@ export async function getStaticProps() {
 
 	var config = {
 		method: 'get',
-		url: 'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=aquaholic-priming-moisturizer',
+		url:
+			'https://qa.api.sugarcosmetics.com/products/qa/getProductsv2?handle=tipsy-lips-moisturizing-balm-01-mojito',
 		headers: {}
 	};
 
